@@ -1,0 +1,13 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "GoatUI Build",
+            "type": "shell",
+            "command": "em++ main.cpp -s WASM=1 -o ./dist/main.js -s EXPORTED_RUNTIME_METHODS='[\"getValue\",\"ccall\"]' -s NO_EXIT_RUNTIME=1 -s DEFAULT_LIBRARY_FUNCS_TO_INCLUDE='$stringToNewUTF8' -sASYNCIFY -Wno-non-pod-varargs -s EXPORTED_FUNCTIONS=[\"_callEventListener\",\"_callEventListenerWithValue\"] -fexceptions",
+            "problemMatcher": []
+        }
+    ]
+}
