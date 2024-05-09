@@ -70,6 +70,10 @@ class Reactive: public Readable{
         return "{{ " + this->id + " }}";
     }
 
+    std::string getID() const{
+        return this->id;
+    }
+
     ~Reactive(){};
 };
 //Version for strings
@@ -123,4 +127,9 @@ class Reactive<std::string>: public Readable{
     }
     
     ~Reactive(){};
+
+    Reactive<std::string> operator=(std::string value){
+        this->setValue(value);
+        return *this;
+    }
 };
