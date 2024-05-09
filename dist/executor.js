@@ -19,7 +19,7 @@ window.mount = ()=>{
     },
     methods:{
       callEventListenerWithValue(value, reactiveID){
-        if(typeof value !== 'number'){
+        if(typeof value == 'string'){
           _callEventListenerWithValue(reactiveID,stringToNewUTF8(value))
         }else{
           _callEventListenerWithValue(reactiveID,value)

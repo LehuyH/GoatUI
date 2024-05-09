@@ -12,8 +12,11 @@ class EventListener{
         unsigned int id;
         std::function<void(int)> eventPerformed;
         static int totalListeners;
+        std::string valuePath = "target.value";
     public:
         EventListener(std::string key,std::function<void(int)> event);
+        EventListener(std::string key,std::string valuePath,std::function<void(int)> event);
+
         void triggerEvent(int value){
             this->eventPerformed(value);
         }
@@ -22,6 +25,9 @@ class EventListener{
         }
         std::string getEventKey() const{
             return this->eventKey;
+        }
+        std::string getValuePath() const{
+            return this->valuePath;
         }
 
 };
@@ -35,6 +41,15 @@ EventListener::EventListener(std::string key,std::function<void(int)> event){
         totalListeners++;
         this->eventKey = key;
         this->eventPerformed = event;
+        hooks.push_back(*this);
+        this->id = totalListeners -1;
+}
+
+EventListener::EventListener(std::string key,std::string valuePath,std::function<void(int)> event){
+        totalListeners++;
+        this->eventKey = key;
+        this->eventPerformed = event;
+        this->valuePath = valuePath;
         hooks.push_back(*this);
         this->id = totalListeners -1;
 }

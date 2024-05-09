@@ -140,7 +140,7 @@ public:
         std::string eventListeners = "";
         for(EventListener eventListener : this->eventListeners){
             if(eventListener.getEventKey() == "change"){
-                eventListeners += "@input=\"callEventListenerWithValue($event.target.value," + std::to_string(eventListener.getId()) + ")\"";
+                eventListeners += "@input=\"callEventListenerWithValue($event." + eventListener.getValuePath() + "," + std::to_string(eventListener.getId()) + ")\"";
             }else{
                 eventListeners += "@" + eventListener.getEventKey() + "=\"_callEventListener(" + std::to_string(eventListener.getId()) + ")\"";
             }
