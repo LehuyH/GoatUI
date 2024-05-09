@@ -52,15 +52,3 @@ public:
         this->children.push_back(new r(label.c_str()));
     }
 };
-
-
-/*
-class Header: public Component{
-	public:
-	Header(string label) : Component("h1",{
-		new Attribute("class","text-8xl font-bold text-blue-400")
-	},{
-		new r(label)
-	}){}
-};
-*/
